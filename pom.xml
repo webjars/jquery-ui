@@ -39,7 +39,7 @@
                         <phase>process-resources</phase>
                         <goals><goal>run</goal></goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <echo message="unzip archive" />
                                 <unzip src="${project.build.directory}/jquery-ui.zip" dest="${project.build.directory}/jquery-ui" />
                                 <echo message="moving javascripts resources" />
@@ -61,7 +61,7 @@
                                 <copy todir="${destDir}/css/images" overwrite="true" verbose="true">
                                     <fileset dir="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/images" />
                                 </copy>
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
