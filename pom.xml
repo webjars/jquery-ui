@@ -52,13 +52,13 @@
                                     </resources>
                                 </copy>
                                 <echo message="moving style resources" />
-                                <copy todir="${destDir}/css" overwrite="true" verbose="true">
+                                <copy todir="${destDir}/stylesheets" overwrite="true" verbose="true">
                                     <resources>
                                         <file file="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/jquery-ui.css" basedir="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/" />
                                         <file file="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/minified/jquery-ui.min.css" basedir="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/minified/" />
                                     </resources>
                                 </copy>
-                                <copy todir="${destDir}/css/images" overwrite="true" verbose="true">
+                                <copy todir="${destDir}/stylesheets/images" overwrite="true" verbose="true">
                                     <fileset dir="${project.build.directory}/jquery-ui/jquery-ui-${jqueryui.version}/themes/base/images" />
                                 </copy>
                             </target>
