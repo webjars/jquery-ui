@@ -7,13 +7,13 @@
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
-    
+
+    <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>jquery-ui</artifactId>
-    <version>1.9.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <version>1.9.0-SNAPSHOT</version>
     <name>jQuery UI</name>
-    <description>WebJar for jQuery</description>
+    <description>WebJar for jQuery UI</description>
     <url>http://webjars.org</url>
 
     <licenses>
@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jqueryui.version>1.9.0</jqueryui.version>
         <jqueryui.sourceUrl>http://jqueryui.com/resources/download/</jqueryui.sourceUrl>
-        <destDir>${project.build.directory}/classes/META-INF/resources/webjars/jquery-ui/${jqueryui.version}</destDir>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destDir>
     </properties>
     
     <dependencies>
