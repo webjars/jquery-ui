@@ -41,7 +41,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqueryui.version>1.9.0</jqueryui.version>
+        <jqueryui.version>1.9.1</jqueryui.version>
         <jqueryui.sourceUrl>http://jqueryui.com/resources/download/</jqueryui.sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destDir>
     </properties>
