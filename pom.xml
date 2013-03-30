@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>jquery-ui</artifactId>
-    <version>1.9.3-SNAPSHOT</version>
+    <version>1.10.2-SNAPSHOT</version>
     <name>jQuery UI</name>
     <description>WebJar for jQuery UI</description>
     <url>http://webjars.org</url>
@@ -41,7 +41,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqueryui.version>1.9.2</jqueryui.version>
+        <jqueryui.version>1.10.2</jqueryui.version>
         <jqueryui.sourceUrl>http://jqueryui.com/resources/download/</jqueryui.sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destDir>
     </properties>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>1.8.2</version>
+            <version>1.9.1</version>
         </dependency>
     </dependencies>
     
@@ -66,7 +66,7 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${jqueryui.sourceUrl}</url>
-                            <fromFile>jquery-ui-${jqueryui.version}.custom.zip</fromFile>
+                            <fromFile>jquery-ui-${jqueryui.version}.zip</fromFile>
                             <toFile>${project.build.directory}/jquery-ui.zip</toFile>
                         </configuration>
                     </execution>
@@ -85,14 +85,11 @@
                                 <echo message="unzip archive" />
                                 <unzip src="${project.build.directory}/jquery-ui.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
-                                <move todir="${destDir}/js">
-                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}.custom/js" />
+                                <move todir="${destDir}/ui">
+                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}/ui" />
                                 </move>
-                                <move todir="${destDir}/css">
-                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}.custom/css" />
-                                </move>
-                                <move todir="${destDir}/development-bundle">
-                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}.custom/development-bundle" />
+                                <move todir="${destDir}/themes">
+                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}/themes" />
                                 </move>
                             </target>
                         </configuration>
