@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>jquery-ui</artifactId>
-    <version>1.10.2-2-SNAPSHOT</version>
+    <version>1.8.21-SNAPSHOT</version>
     <name>jQuery UI</name>
     <description>WebJar for jQuery UI</description>
     <url>http://webjars.org</url>
@@ -41,16 +41,16 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqueryui.version>1.10.2</jqueryui.version>
-        <jqueryui.sourceUrl>http://jqueryui.com/resources/download/</jqueryui.sourceUrl>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destDir>
+        <jqueryui.version>1.8.21</jqueryui.version>
+        <downloadUrl>http://code.jquery.com/ui/${jqueryui.version}</downloadUrl>
+        <destinationDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destinationDir>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>1.9.1</version>
+            <version>1.7.2</version>
         </dependency>
     </dependencies>
     
@@ -62,40 +62,28 @@
                 <version>1.0-beta-4</version>
                 <executions>
                     <execution>
+                        <id>download-js</id>
                         <phase>process-resources</phase>
                         <goals><goal>download-single</goal></goals>
                         <configuration>
-                            <url>${jqueryui.sourceUrl}</url>
-                            <fromFile>jquery-ui-${jqueryui.version}.zip</fromFile>
-                            <toFile>${project.build.directory}/jquery-ui.zip</toFile>
+                            <url>${downloadUrl}</url>
+                            <fromFile>jquery-ui.js</fromFile>
+                            <toDir>${destinationDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${downloadUrl}</url>
+                            <fromFile>jquery-ui.min.js</fromFile>
+                            <toDir>${destinationDir}</toDir>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals><goal>run</goal></goals>
-                        <configuration>
-                            <target>
-                                <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/jquery-ui.zip" dest="${project.build.directory}" />
-                                <echo message="moving resources" />
-                                <move todir="${destDir}/ui">
-                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}/ui" />
-                                </move>
-                                <move todir="${destDir}/themes">
-                                    <fileset dir="${project.build.directory}/jquery-ui-${jqueryui.version}/themes" />
-                                </move>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -105,39 +93,9 @@
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${destDir}</targetPath>
+                <targetPath>${destinationDir}</targetPath>
             </resource>
         </resources>
     </build>
 
-    <profiles>
-        <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.2</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-    
 </project>
