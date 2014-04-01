@@ -1,8 +1,4 @@
-/*global requirejs */
-
-// Ensure any request for this webjar brings in jQuery.
 requirejs.config({
-    shim: {
-        'jquery-ui': [ 'webjars!jquery.js' ]
-    }
+    paths: { "jquery-ui": webjars.path("jquery-ui", "ui/jquery-ui") },
+    shim: { "jquery-ui": [ "jquery" ] }
 });
