@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>jquery-ui</artifactId>
-    <version>1.11.1-SNAPSHOT</version>
+    <version>1.11.0-1-SNAPSHOT</version>
     <name>jQuery UI</name>
     <description>WebJar for jQuery UI</description>
     <url>http://webjars.org</url>
@@ -46,8 +46,14 @@
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${jqueryui.version}</destDir>
         <requirejs>
             {
-                "paths": { "jquery-ui-min": "ui/minified/jquery-ui.min" },
-                "shim": { "jquery-ui-min": [ "jquery" ] }
+                "paths": {
+                    "jquery-ui": "jquery-ui",
+                    "jquery-ui-min": "jquery-ui.min"
+                },
+                "shim": {
+                    "jquery-ui": [ "jquery" ],
+                    "jquery-ui-min": [ "jquery" ]
+                }
             }
         </requirejs>
     </properties>
