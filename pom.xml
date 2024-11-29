@@ -19,7 +19,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://github.com/jquery/jquery-ui/blob/master/MIT-LICENSE.txt</url>
+            <url>https://github.com/jquery/jquery-ui/blob/master/LICENSE.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
